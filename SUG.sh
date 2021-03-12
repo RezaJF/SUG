@@ -24,7 +24,7 @@ PATH_to_REF_hg38=$1
 
 cat subSample.txt | while read i j
 	do
-		samples=$(cat bottom_cPRS_quintile_centenarian.txt | while read i; do find /home/zdzlab/common/U19/data/Einstein-Centenarians/REGN_Freeze_One/data/GVCF/ | grep -E '.gvcf.gz$' | sed 's/^/--variant /' | grep $i | grep -v *-DUPLICATE.gvcf.gz; done)
+		samples=$(cat bottom_cPRS_quintile_centenarian.txt | while read i; do find /home/zdzlab/common/U19/data/Einstein-Centenarians/REGN_Freeze_One/data/GVCF/ | grep -E '.gvcf.gz$' | grep -v DUPLICATE.gvcf.gz | sed 's/^/--variant /' | grep $i; done)
 
 
 		gatk CombineGVCFs \
